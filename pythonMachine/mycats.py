@@ -39,7 +39,7 @@ def add_cat():
         show_cat()
 
 def remove_cat():
-    target_index = crazy_search()
+    target_index = search_cat_names()
 
     if target_index is None:
         return
@@ -63,43 +63,8 @@ def show_cat():
     print("The cat names are:")
     for i in range(len(cats)):
         print(f" {i}. {cats[i]}")
-    
+           
 def search_cat_names():
-    index = None
-
-    while True:
-        selector = input("Select the way you want to search a cat from list cats. By index press 1. By name press 2. To cancel the search press 3.").strip()
-    
-        if selector == "1":
-                try:
-                    user_input_index = input("Enter an index number: ").strip()
-                    index = int(user_input_index)
-
-                    name = cats[index]
-                    print(f"{index} is registered! Name is: {name}")
-                    return index
-                except IndexError:
-                    print(f"{user_input_index} is not in cats list! Sorry!")
-                except ValueError:
-                    print(f"{user_input_index} is not valid! Try again: ")
-                    continue
-
-        elif selector == "2":
-            name = input("Enter a pet name:").capitalize().strip()
-            if name not in cats:
-                print(f"{name} is not in cats list! Sorry!")
-            else:
-                index = cats.index(name)
-                print(f"{name} is registered! Index is: {index}")
-                return index
-        elif selector == "3":
-            print("Search canceled.")
-            return None
-        else:
-            print("Error: select 1. or 2. or 3 to exit.")
-            continue
-        
-def crazy_search():
     index = None
     if not cats: # Si la lista está vacía []
         print("The list is empty! No cats to search.")
@@ -145,8 +110,7 @@ def menu():
     print("1. Add Cats")
     print("2. Show Cats")
     print("3. Search Cats Names")
-    print("4. Crazy Search")
-    print("5. Remove Cat")
+    print("4. Remove Cat")
     print("0. Exit")
     print("="*20)
 
@@ -162,9 +126,6 @@ def menu():
         search_cat_names()
         return True
     elif selector == "4":
-        crazy_search()
-        return True
-    elif selector == "5":
         remove_cat()
         return True
     elif selector == "0":
