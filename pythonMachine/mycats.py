@@ -4,7 +4,7 @@ def add_cat():
     number = 1
     while True:
         try:
-            question = int(input("Do you want to add a cat? 1 for yes, 2 for no.\n")).strip()
+            question = int(input("Do you want to add a cat? 1 for yes, 2 for no.\n"))
             if question == 1 or question == 2:
                 break
             else:
@@ -15,7 +15,7 @@ def add_cat():
     if question == 1:
         while True:
             try:
-                ammount = int(input("How many cats do you want to add?\n")).strip()
+                ammount = int(input("How many cats do you want to add?\n"))
                 if ammount > 0:
                     break
                 else:
@@ -47,7 +47,7 @@ def remove_cat():
     while True:
         
         try:
-            confirm = int(input(f"Are you sure you want to remove {cats[target_index]}? 1. for yes, 2. for no.")).strip()
+            confirm = int(input(f"Are you sure you want to remove {cats[target_index]}? 1. for yes, 2. for no."))
             if confirm == 1:
                 removed = cats.pop(target_index)
                 print(f"{removed} was removed")
