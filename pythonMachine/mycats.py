@@ -123,6 +123,13 @@ def random_cat_message():
         ]
     print(messages[random.randint(0, len(messages) - 1)])
 
+def pretty_cat_name():
+    target_index = search_cat_names()
+
+    if target_index is None:
+        return
+    for i in cats[target_index]:
+        print("* * *", i , "* * *")
 
 def menu():
     print("\n" + "="*20)
@@ -134,6 +141,7 @@ def menu():
     print("4. Remove Cat")
     print("5. Sorting Cats Names")
     print("6. Random Cat Message")
+    print("7. Show Pretty Cat")
     print("0. Exit")
     print("="*20)
 
@@ -156,6 +164,9 @@ def menu():
         return True
     elif selector == "6":
         random_cat_message()
+        return True
+    elif selector == "7":
+        pretty_cat_name()
         return True
     elif selector == "0":
         print("Goodbye!")
