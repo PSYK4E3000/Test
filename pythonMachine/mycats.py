@@ -102,7 +102,11 @@ def search_cat_names():
         else:
             print("Error: select 1. or 2. or 3 to exit.")
             continue
-        
+
+def sorting_cats_names():
+    cats.sort()
+    show_cat()    
+
 def menu():
     print("\n" + "="*20)
     print("CAT MANAGER")
@@ -111,6 +115,7 @@ def menu():
     print("2. Show Cats")
     print("3. Search Cats Names")
     print("4. Remove Cat")
+    print("5. Sorting Cats Names")
     print("0. Exit")
     print("="*20)
 
@@ -127,6 +132,9 @@ def menu():
         return True
     elif selector == "4":
         remove_cat()
+        return True
+    elif selector == "5":
+        sorting_cats_names()
         return True
     elif selector == "0":
         print("Goodbye!")
