@@ -1,3 +1,4 @@
+import random
 cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
 def add_cat():
@@ -107,6 +108,22 @@ def sorting_cats_names():
     cats.sort()
     show_cat()    
 
+def random_cat_message():
+    messages = [
+        "Meow! 🐱",
+        "Purr purr...",
+        "The cat is adorable!",
+        "Cats rule the world",
+        "Paws are precious",
+        "Whiskers and cuddles",
+        "Cat lovers unite!",
+        "Meow means hello",
+        "Cats are the best",
+        "Purrfectly amazing"
+        ]
+    print(messages[random.randint(0, len(messages) - 1)])
+
+
 def menu():
     print("\n" + "="*20)
     print("CAT MANAGER")
@@ -116,6 +133,7 @@ def menu():
     print("3. Search Cats Names")
     print("4. Remove Cat")
     print("5. Sorting Cats Names")
+    print("6. Random Cat Message")
     print("0. Exit")
     print("="*20)
 
@@ -135,6 +153,9 @@ def menu():
         return True
     elif selector == "5":
         sorting_cats_names()
+        return True
+    elif selector == "6":
+        random_cat_message()
         return True
     elif selector == "0":
         print("Goodbye!")
