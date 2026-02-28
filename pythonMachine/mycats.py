@@ -131,8 +131,6 @@ def pretty_cat_name():
     for i in cats[target_index]:
         print("* * *", i , "* * *")
 
-# Test commit
-
 def menu():
     print("\n" + "="*20)
     print("CAT MANAGER")
