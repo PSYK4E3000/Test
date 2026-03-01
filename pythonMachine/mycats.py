@@ -134,19 +134,27 @@ def pretty_cat_name(lista):
     for i in lista[target_index]:
         print("* * *", i , "* * *")
 
+def menu_selector():
+    while True:
+        tipo = input("Para gestionar Gatos presione 1. \n Para gestionar Perros presione 2. \n Para salir presione 3.")
+
+        if tipo == "1":
+            return cats, "CAT"
+        elif tipo == "2":
+            return dogs, "DOG"
+        elif tipo == "3":
+            print("Goodbye!")
+            return None, None
+        else:
+            print("Invalid option, try again.")
+            return True
+
 def menu():
+    lista_activa, nombre_animal = menu_selector()
 
-    tipo = input("Para gestionar Gatos presione 1. \n Para gestionar Perros presione 2.")
+    if lista_activa is None:
+        return False
 
-    if tipo == 1:
-        lista_activa = cats
-        nombre_animal = "CAT"
-    elif tipo == 2:
-        lista_activa = dogs
-        nombre_animal = "DOG"
-    else:
-        print("Invalid option, try again.")
-        return True
     while True:
         print("\n" + "="*20)
         print(f"{nombre_animal} MANAGER")
