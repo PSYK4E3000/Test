@@ -3,7 +3,7 @@ cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
 dogs = ['Rex', 'Whiskers', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
 
-def add_cat(lista):
+def add_item(lista):
     number = 1
     while True:
         try:
@@ -36,13 +36,13 @@ def add_cat(lista):
                 number += 1
             else:
                 print("Error: The name cannot be empty or just spaces.")
-        show_cat(lista)
+        show_item(lista)
 
     elif question == 2:
-        show_cat(lista)
+        show_item(lista)
 
-def remove_cat(lista):
-    target_index = search_cat_names(lista)
+def remove_item(lista):
+    target_index = search_item_names(lista)
 
     if target_index is None:
         return
@@ -62,12 +62,12 @@ def remove_cat(lista):
             print("Error: select 1. or 2.")
             continue
 
-def show_cat(lista):
+def show_item(lista):
     print("The cat names are:")
     for i in range(len(lista)):
         print(f" {i}. {lista[i]}")
            
-def search_cat_names(lista):
+def search_item_names(lista):
     index = None
     if not lista: # Si la lista está vacía []
         print("The list is empty! No cats to search.")
@@ -106,28 +106,42 @@ def search_cat_names(lista):
             print("Error: select 1. or 2. or 3 to exit.")
             continue
 
-def sorting_cats_names(lista):
+def sorting_item_names(lista):
     lista.sort()
-    show_cat(lista)    
+    show_item(lista)    
 
-def random_cat_message():
-    messages = [
-        "Meow! 🐱",
-        "Purr purr...",
-        "The cat is adorable!",
-        "Cats rule the world",
-        "Paws are precious",
-        "Whiskers and cuddles",
-        "Cat lovers unite!",
-        "Meow means hello",
-        "Cats are the best",
-        "Purrfectly amazing"
-        ]
-    print(random.choice(messages))
-    #print(messages[random.randint(0, len(messages) - 1)])
+def random_item_message(animal):
+    if animal == "CAT":
+        messages = [
+            "Meow! 🐱",
+            "Purr purr...",
+            "The cat is adorable!",
+            "Cats rule the world",
+            "Paws are precious",
+            "Whiskers and cuddles",
+            "Cat lovers unite!",
+            "Meow means hello",
+            "Cats are the best",
+            "Purrfectly amazing"
+            ]
+        print(random.choice(messages))
+    elif animal == "DOG":
+        messages = [
+            "Woof! 🐕",
+            "Bark bark...",
+            "The dog is adorable!",
+            "Dogs rule the world",
+            "Paws are precious",
+            "Buddy and cuddles",
+            "Dog lovers unite!",
+            "Woof means hello",
+            "Dogs are the best",
+            "Bark perfect"
+            ]
+        print(random.choice(messages))
 
-def pretty_cat_name(lista):
-    target_index = search_cat_names(lista)
+def pretty_item_name(lista):
+    target_index = search_item_names(lista)
 
     if target_index is None:
         return
@@ -147,7 +161,6 @@ def menu_selector():
             return None, None
         else:
             print("Invalid option, try again.")
-            return True
 
 def menu():
     lista_activa, nombre_animal = menu_selector()
@@ -172,32 +185,31 @@ def menu():
         selector = input("Select a tool: \n").strip()
 
         if selector == "1":
-            add_cat(lista_activa)
-            return True
+            add_item(lista_activa)
+            continue
         elif selector == "2":
-            show_cat(lista_activa)
-            return True
+            show_item(lista_activa)
+            continue
         elif selector == "3":
-            search_cat_names(lista_activa)
-            return True
+            search_item_names(lista_activa)
+            continue
         elif selector == "4":
-            remove_cat(lista_activa)
-            return True
+            remove_item(lista_activa)
+            continue
         elif selector == "5":
-            sorting_cats_names(lista_activa)
-            return True
+            sorting_item_names(lista_activa)
+            continue
         elif selector == "6":
-            random_cat_message()
-            return True
+            random_item_message(nombre_animal)
+            continue
         elif selector == "7":
-            pretty_cat_name(lista_activa)
-            return True
+            pretty_item_name(lista_activa)
+            continue
         elif selector == "0":
             print("Goodbye!")
             return False
         else:
             print("Invalid option, try again.")
-            return True
 
 while True:
     if not menu():
