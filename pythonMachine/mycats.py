@@ -3,11 +3,11 @@ cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
 dogs = ['Rex', 'Whiskers', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
 
-def add_item(lista, tipo):
+def add_item(list, type):
     number = 1
     while True:
         try:
-            question = int(input(f"Do you want to add a {tipo.lower()}? 1 for yes, 2 for no.\n"))
+            question = int(input(f"Do you want to add a {type.lower()}? 1 for yes, 2 for no.\n"))
             if question == 1 or question == 2:
                 break
             else:
@@ -18,31 +18,31 @@ def add_item(lista, tipo):
     if question == 1:
         while True:
             try:
-                ammount = int(input(f"How many {tipo.lower()}s do you want to add?\n"))
-                if ammount > 0:
+                amount = int(input(f"How many {type.lower()}s do you want to add?\n"))
+                if amount > 0:
                     break
                 else:
                     print("Please enter a number greater than 0")
             except ValueError:
                 print("You did not enter a number. Please enter a number:")
         
-        while ammount > 0:
+        while amount > 0:
             
-            name = input(f"Write the name of the {tipo.lower()} number {number} and press enter:" ).strip().capitalize()
+            name = input(f"Write the name of the {type.lower()} number {number} and press enter:" ).strip().capitalize()
 
             if name:
-                lista.append(name)
-                ammount -= 1
+                list.append(name)
+                amount -= 1
                 number += 1
             else:
                 print("Error: The name cannot be empty or just spaces.")
-        show_item(lista, tipo)
+        show_item(list, type)
 
     elif question == 2:
-        show_item(lista, tipo)
+        show_item(list, type)
 
-def remove_item(lista):
-    target_index = search_item_names(lista)
+def remove_item(list):
+    target_index = search_item_names(list)
 
     if target_index is None:
         return
@@ -50,9 +50,9 @@ def remove_item(lista):
     while True:
         
         try:
-            confirm = int(input(f"Are you sure you want to remove {lista[target_index]}? 1. for yes, 2. for no."))
+            confirm = int(input(f"Are you sure you want to remove {list[target_index]}? 1. for yes, 2. for no."))
             if confirm == 1:
-                removed = lista.pop(target_index)
+                removed = list.pop(target_index)
                 print(f"{removed} was removed")
                 break
             elif confirm == 2:
@@ -62,29 +62,29 @@ def remove_item(lista):
             print("Error: select 1. or 2.")
             continue
 
-def show_item(lista, tipo):
-    print(f"The {tipo.lower()} names are:")
-    for i in range(len(lista)):
-        print(f" {i}. {lista[i]}")
+def show_item(list, type):
+    print(f"The {type.lower()} names are:")
+    for i in range(len(list)):
+        print(f" {i}. {list[i]}")
            
-def search_item_names(lista, tipo):
+def search_item_names(list, type):
     index = None
-    if not lista: # Si la lista está vacía []
+    if not list: # Si la list está vacía []
         print("The list is empty! No cats to search.")
         return None
     while True:
-        selector = input(f"Select the way you want to search a {tipo.lower()} from list {tipo.lower()}s. By index press 1. By name press 2. To cancel the search press 3.").strip()
+        selector = input(f"Select the way you want to search a {type.lower()} from list {type.lower()}s. By index press 1. By name press 2. To cancel the search press 3.").strip()
 
         if selector == "1":
             try:
                 user_input_index = input("Enter an index number: ").strip()
                 index = int(user_input_index)
-                name = lista[index]
+                name = list[index]
                 print(f"{index} is registered! Name is: {name}")
                 return index
 
             except IndexError:
-                print(f"{user_input_index} is not in {tipo.lower()}s list! Sorry!")
+                print(f"{user_input_index} is not in {type.lower()}s list! Sorry!")
             except ValueError:
                 print(f"{user_input_index} is not valid! Try again: ")
                 continue
@@ -92,11 +92,11 @@ def search_item_names(lista, tipo):
         elif selector == "2":
             name = input("Enter a pet name:").capitalize().strip()
             try:
-                index = lista.index(name)
+                index = list.index(name)
                 print(f"{name} is registered! Index is: {index}")
                 return index
             except ValueError:
-                print(f"{name} is not in {tipo.lower()}s list! Sorry!")
+                print(f"{name} is not in {type.lower()}s list! Sorry!")
 
         elif selector == "3":
             print("Search canceled.")
@@ -106,9 +106,9 @@ def search_item_names(lista, tipo):
             print("Error: select 1. or 2. or 3 to exit.")
             continue
 
-def sorting_item_names(lista, tipo):
-    lista.sort()
-    show_item(lista, tipo)    
+def sorting_item_names(list, type):
+    list.sort()
+    show_item(list, type)    
 
 def random_item_message(animal):
     if animal == "CAT":
@@ -140,70 +140,70 @@ def random_item_message(animal):
             ]
         print(random.choice(messages))
 
-def pretty_item_name(lista):
-    target_index = search_item_names(lista)
+def pretty_item_name(list):
+    target_index = search_item_names(list)
 
     if target_index is None:
         return
-    for i in lista[target_index]:
+    for i in list[target_index]:
         print("* * *", i , "* * *")
 
 def menu_selector():
     while True:
-        tipo = input("Para gestionar Gatos presione 1. \n Para gestionar Perros presione 2. \n Para salir presione 3.")
+        type = input("To manage cats press 1. To manage dogs press 2. To exit press 3.")
 
-        if tipo == "1":
+        if type == "1":
             return cats, "CAT"
-        elif tipo == "2":
+        elif type == "2":
             return dogs, "DOG"
-        elif tipo == "3":
+        elif type == "3":
             print("Goodbye!")
             return None, None
         else:
             print("Invalid option, try again.")
 
 def menu():
-    lista_activa, nombre_animal = menu_selector()
+    active_list, animal_name = menu_selector()
 
-    if lista_activa is None:
+    if active_list is None:
         return False
 
     while True:
         print("\n" + "="*20)
-        print(f"{nombre_animal} MANAGER")
+        print(f"{animal_name} MANAGER")
         print("="*20)
-        print(f"1. Add {nombre_animal}")
-        print(f"2. Show {nombre_animal}")
-        print(f"3. Search {nombre_animal} Names")
-        print(f"4. Remove {nombre_animal}")
-        print(f"5. Sorting {nombre_animal} Names")
-        print(f"6. Random {nombre_animal} Message")
-        print(f"7. Show Pretty {nombre_animal}")
+        print(f"1. Add {animal_name}")
+        print(f"2. Show {animal_name}")
+        print(f"3. Search {animal_name} Names")
+        print(f"4. Remove {animal_name}")
+        print(f"5. Sorting {animal_name} Names")
+        print(f"6. Random {animal_name} Message")
+        print(f"7. Show Pretty {animal_name}")
         print("0. Exit")
         print("="*20)
 
         selector = input("Select a tool: \n").strip()
 
         if selector == "1":
-            add_item(lista_activa, nombre_animal)
+            add_item(active_list, animal_name)
             continue
         elif selector == "2":
-            show_item(lista_activa, nombre_animal)
+            show_item(active_list, animal_name)
             continue
         elif selector == "3":
-            search_item_names(lista_activa, nombre_animal)
+            search_item_names(active_list, animal_name)
             continue
         elif selector == "4":
-            remove_item(lista_activa)
+            remove_item(active_list)
             continue
         elif selector == "5":
-            sorting_item_names(lista_activa, nombre_animal)
+            sorting_item_names(active_list, animal_name)
             continue
         elif selector == "6":
-            random_item_message(nombre_animal)
+            random_item_message(animal_name)
             continue
         elif selector == "7":
-            pretty_item_name(lista_activa)
+            pretty_item_name(active_list)
             continue
         elif selector == "0":
             print("Goodbye!")
