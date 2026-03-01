@@ -18,4 +18,4 @@ Un sistema interactivo en consola para la gestión de inventarios de mascotas, d
 - [ ] Añadir IDs únicos para cada mascota para evitar conflictos de índice.
 
 ## 👤 Autor
-Tu Nombre - [Tu GitHub](https://github.com/PSYK4E3000)
+https://github.com/PSYK4E3000
