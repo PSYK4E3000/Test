@@ -1,7 +1,7 @@
 import random
 cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
-def add_cat():
+def add_cat(lista):
     number = 1
     while True:
         try:
@@ -26,21 +26,21 @@ def add_cat():
         
         while ammount > 0:
             
-            cat_name = input(f"Write the name of the cat number {number} and press enter:" ).strip().capitalize()
+            name = input(f"Write the name of the cat number {number} and press enter:" ).strip().capitalize()
 
-            if cat_name:
-                cats.append(cat_name)
+            if name:
+                lista.append(name)
                 ammount -= 1
                 number += 1
             else:
                 print("Error: The name cannot be empty or just spaces.")
-        show_cat()
+        show_cat(lista)
 
     elif question == 2:
-        show_cat()
+        show_cat(lista)
 
-def remove_cat():
-    target_index = search_cat_names()
+def remove_cat(lista):
+    target_index = search_cat_names(lista)
 
     if target_index is None:
         return
@@ -48,9 +48,9 @@ def remove_cat():
     while True:
         
         try:
-            confirm = int(input(f"Are you sure you want to remove {cats[target_index]}? 1. for yes, 2. for no."))
+            confirm = int(input(f"Are you sure you want to remove {lista[target_index]}? 1. for yes, 2. for no."))
             if confirm == 1:
-                removed = cats.pop(target_index)
+                removed = lista.pop(target_index)
                 print(f"{removed} was removed")
                 break
             else:
@@ -60,14 +60,14 @@ def remove_cat():
             print("Error: select 1. or 2.")
             continue
 
-def show_cat():
+def show_cat(lista):
     print("The cat names are:")
-    for i in range(len(cats)):
-        print(f" {i}. {cats[i]}")
+    for i in range(len(lista)):
+        print(f" {i}. {lista[i]}")
            
-def search_cat_names():
+def search_cat_names(lista):
     index = None
-    if not cats: # Si la lista está vacía []
+    if not lista: # Si la lista está vacía []
         print("The list is empty! No cats to search.")
         return None
     while True:
@@ -77,7 +77,7 @@ def search_cat_names():
             try:
                 user_input_index = input("Enter an index number: ").strip()
                 index = int(user_input_index)
-                name = cats[index]
+                name = lista[index]
                 print(f"{index} is registered! Name is: {name}")
                 return index
 
@@ -90,7 +90,7 @@ def search_cat_names():
         elif selector == "2":
             name = input("Enter a pet name:").capitalize().strip()
             try:
-                index = cats.index(name)
+                index = lista.index(name)
                 print(f"{name} is registered! Index is: {index}")
                 return index
             except ValueError:
@@ -104,9 +104,9 @@ def search_cat_names():
             print("Error: select 1. or 2. or 3 to exit.")
             continue
 
-def sorting_cats_names():
-    cats.sort()
-    show_cat()    
+def sorting_cats_names(lista):
+    lista.sort()
+    show_cat(lista)    
 
 def random_cat_message():
     messages = [
@@ -121,14 +121,15 @@ def random_cat_message():
         "Cats are the best",
         "Purrfectly amazing"
         ]
-    print(messages[random.randint(0, len(messages) - 1)])
+    print(random.choice(messages))
+    #print(messages[random.randint(0, len(messages) - 1)])
 
-def pretty_cat_name():
-    target_index = search_cat_names()
+def pretty_cat_name(lista):
+    target_index = search_cat_names(lista)
 
     if target_index is None:
         return
-    for i in cats[target_index]:
+    for i in lista[target_index]:
         print("* * *", i , "* * *")
 
 def menu():
@@ -148,25 +149,25 @@ def menu():
     selector = input("Select a tool: \n").strip()
 
     if selector == "1":
-        add_cat()
+        add_cat(cats)
         return True
     elif selector == "2":
-        show_cat()
+        show_cat(cats)
         return True
     elif selector == "3":
-        search_cat_names()
+        search_cat_names(cats)
         return True
     elif selector == "4":
-        remove_cat()
+        remove_cat(cats)
         return True
     elif selector == "5":
-        sorting_cats_names()
+        sorting_cats_names(cats)
         return True
     elif selector == "6":
         random_cat_message()
         return True
     elif selector == "7":
-        pretty_cat_name()
+        pretty_cat_name(cats)
         return True
     elif selector == "0":
         print("Goodbye!")
