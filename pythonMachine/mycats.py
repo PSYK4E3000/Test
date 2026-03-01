@@ -1,7 +1,17 @@
 import random
-cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
-dogs = ['Rex', 'Whiskers', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
+# ---------------------------------------------------------
+# NOTA PARA EL FUTURO: PERSISTENCIA DE DATOS
+# ---------------------------------------------------------
+# Actualmente, los datos se borran al cerrar el programa. 
+# Para aprender a guardarlos permanentemente, busca:
+# 1. El módulo 'json' (ideal para listas y diccionarios).
+# 2. Manejo de archivos con 'with open("filename.json", "w") as f:'.
+# 3. Funciones json.dump() para guardar y json.load() para leer.
+# ---------------------------------------------------------
+
+cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
+dogs = ['Rex', 'Coky', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
 
 def add_item(items_list, type):
     number = 1
@@ -161,6 +171,17 @@ def menu_selector():
             return None, None
         else:
             print("Invalid option, try again.")
+
+# ---------------------------------------------------------
+# NOTA PARA EL FUTURO: PROGRAMACIÓN ORIENTADA A OBJETOS (POO)
+# ---------------------------------------------------------
+# En lugar de listas de strings, podrías crear una clase 'Pet'.
+# Conceptos clave para investigar:
+# 1. 'class Pet:': Para definir qué atributos tiene cada animal (nombre, edad, especie).
+# 2. El método '__init__': Para inicializar cada objeto mascota.
+# 3. Encapsulamiento: Para que cada mascota sepa "presentarse" o "hacer un sonido" por sí misma.
+# 4. Herencia: Crear una clase 'Animal' y que 'Cat' y 'Dog' hereden de ella.
+# ---------------------------------------------------------
 
 def menu():
     active_items_list, animal_name = menu_selector()
