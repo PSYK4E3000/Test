@@ -1,6 +1,8 @@
 import random
 cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 
+dogs = ['Rex', 'Whiskers', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
+
 def add_cat(lista):
     number = 1
     while True:
@@ -133,48 +135,61 @@ def pretty_cat_name(lista):
         print("* * *", i , "* * *")
 
 def menu():
-    print("\n" + "="*20)
-    print("CAT MANAGER")
-    print("="*20)
-    print("1. Add Cats")
-    print("2. Show Cats")
-    print("3. Search Cats Names")
-    print("4. Remove Cat")
-    print("5. Sorting Cats Names")
-    print("6. Random Cat Message")
-    print("7. Show Pretty Cat")
-    print("0. Exit")
-    print("="*20)
 
-    selector = input("Select a tool: \n").strip()
+    tipo = input("Para gestionar Gatos presione 1. \n Para gestionar Perros presione 2.")
 
-    if selector == "1":
-        add_cat(cats)
-        return True
-    elif selector == "2":
-        show_cat(cats)
-        return True
-    elif selector == "3":
-        search_cat_names(cats)
-        return True
-    elif selector == "4":
-        remove_cat(cats)
-        return True
-    elif selector == "5":
-        sorting_cats_names(cats)
-        return True
-    elif selector == "6":
-        random_cat_message()
-        return True
-    elif selector == "7":
-        pretty_cat_name(cats)
-        return True
-    elif selector == "0":
-        print("Goodbye!")
-        return False
+    if tipo == 1:
+        lista_activa = cats
+        nombre_animal = "CAT"
+    elif tipo == 2:
+        lista_activa = dogs
+        nombre_animal = "DOG"
     else:
         print("Invalid option, try again.")
         return True
+    while True:
+        print("\n" + "="*20)
+        print(f"{nombre_animal} MANAGER")
+        print("="*20)
+        print(f"1. Add {nombre_animal}")
+        print(f"2. Show {nombre_animal}")
+        print(f"3. Search {nombre_animal} Names")
+        print(f"4. Remove {nombre_animal}")
+        print(f"5. Sorting {nombre_animal} Names")
+        print(f"6. Random {nombre_animal} Message")
+        print(f"7. Show Pretty {nombre_animal}")
+        print("0. Exit")
+        print("="*20)
+
+        selector = input("Select a tool: \n").strip()
+
+        if selector == "1":
+            add_cat(lista_activa)
+            return True
+        elif selector == "2":
+            show_cat(lista_activa)
+            return True
+        elif selector == "3":
+            search_cat_names(lista_activa)
+            return True
+        elif selector == "4":
+            remove_cat(lista_activa)
+            return True
+        elif selector == "5":
+            sorting_cats_names(lista_activa)
+            return True
+        elif selector == "6":
+            random_cat_message()
+            return True
+        elif selector == "7":
+            pretty_cat_name(lista_activa)
+            return True
+        elif selector == "0":
+            print("Goodbye!")
+            return False
+        else:
+            print("Invalid option, try again.")
+            return True
 
 while True:
     if not menu():
