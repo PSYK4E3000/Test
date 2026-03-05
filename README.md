@@ -18,4 +18,5 @@ Un sistema interactivo en consola para la gestión de inventarios de mascotas, d
 - [ ] Añadir IDs únicos para cada mascota para evitar conflictos de índice.
 
 ## 👤 Autor
-https://github.com/PSYK4E3000
+
+[![GitHub](https://img.shields.io/badge/GitHub-PSYK4E3000-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/PSYK4E3000)

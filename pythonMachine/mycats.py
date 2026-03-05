@@ -1,4 +1,5 @@
 import random
+import copy
 
 # ---------------------------------------------------------
 # NOTA PARA EL FUTURO: PERSISTENCIA DE DATOS
@@ -158,6 +159,26 @@ def pretty_item_name(items_list, type):
     for i in items_list[target_index]:
         print("* * *", i , "* * *")
 
+def copy_list_to_other(items_list, type):
+    
+    while True:
+        selector = input(f"Do you want to copy the {type} list to other list? press 1. to copy. press 2. to exit to menu\n")
+        
+        # list_name = type
+        if selector == "1":
+            
+            new_list = copy.copy(items_list)
+            new_list[0] = "Experimental: Copy!"
+            print(f"{new_list}")
+            return None
+            
+        elif selector == "2":
+            print("Search canceled.")
+            return None
+        else:
+            print("Error: select 1. or 2. to exit.")
+            continue
+
 def menu_selector():
     while True:
         type = input("To manage cats press 1. To manage dogs press 2. To exit press 3.")
@@ -200,6 +221,7 @@ def menu():
         print(f"5. Sorting {animal_name} Names")
         print(f"6. Random {animal_name} Message")
         print(f"7. Show Pretty {animal_name}")
+        print(f"8. Copy {animal_name} List")
         print("0. Exit")
         print("="*20)
 
@@ -225,6 +247,9 @@ def menu():
             continue
         elif selector == "7":
             pretty_item_name(active_items_list, animal_name)
+            continue
+        elif selector == "8":
+            copy_list_to_other(active_items_list, animal_name)
             continue
         elif selector == "0":
             print("Goodbye!")
