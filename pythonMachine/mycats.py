@@ -15,6 +15,16 @@ cats = ['Cleo', 'Mia', 'Santa', 'Fatboi', 'Jero']
 dogs = ['Rex', 'Coky', 'Buddy', 'Max', 'Charlie', 'Puffy', 'Fluffy', 'Milo', 'Daisy', 'Luna']
 
 def add_item(items_list, type):
+    """
+    Adds a specified number of items of a given type to the list.
+
+    Args:
+        items_list (list): The list to which items will be added.
+        type (str): The type of items to add (e.g., 'CAT' or 'DOG').
+
+    Returns:
+        None
+    """
     number = 1
     while True:
         try:
@@ -53,6 +63,19 @@ def add_item(items_list, type):
         show_item(items_list, type)
 
 def remove_item(items_list, type):
+    """
+        remove_item(items_list, type)
+        Removes an item from a list based on its type.
+        Parameters:
+        - items_list: List of items to search through.
+        - type: Type of item to remove.
+        Returns:
+        - None
+        Example usage:
+        >>> items = ["cat", "dog", "fish"]
+        >>> remove_item(items, "dog")
+        dog was removed
+        """
     target_index = search_item_names(items_list, type)
 
     if target_index is None:
@@ -74,11 +97,35 @@ def remove_item(items_list, type):
             continue
 
 def show_item(items_list, type):
+    """
+    Show items in a list based on their type.
+
+    Args:
+        items_list (list): A list of items to be shown.
+        type (str): The type of items to be shown.
+
+    Returns:
+        None
+    """
     print(f"The {type.lower()} names are:")
     for i in range(len(items_list)):
         print(f" {i}. {items_list[i]}")
            
 def search_item_names(items_list, type):
+    """
+    This function allows the user to search for items in a list based on either index or name.
+    
+    Parameters:
+    items_list (list): A list of items to search through.
+    type (str): The type of items to search for (e.g., 'cats', 'dogs').
+    
+    Returns:
+    int or None: The index of the found item or None if the search is canceled or an error occurs.
+    
+    Raises:
+    IndexError: If the provided index is out of range.
+    ValueError: If the provided input is not valid.
+    """
     index = None
     if not items_list: # Si la items_list está vacía []
         print(f"The items_list is empty! No {type.lower()}s to search.")
@@ -118,10 +165,29 @@ def search_item_names(items_list, type):
             continue
 
 def sorting_item_names(items_list, type):
+    """
+    Sorts a list of items based on a specified type and displays the sorted list.
+
+    Parameters:
+        items_list (list): The list of items to be sorted.
+        type (str): The type of sorting to be performed.
+
+    Returns:
+        None
+    """
     items_list.sort()
     show_item(items_list, type)    
 
 def random_item_message(animal):
+    """
+    This function generates a random message based on the type of animal.
+    
+    Args:
+        animal (str): The type of animal ("CAT" or "DOG").
+        
+    Returns:
+        None
+    """
     if animal == "CAT":
         messages = [
             "Meow! 🐱",
@@ -134,7 +200,7 @@ def random_item_message(animal):
             "Meow means hello",
             "Cats are the best",
             "Purrfectly amazing"
-            ]
+        ]
         print(random.choice(messages))
     elif animal == "DOG":
         messages = [
@@ -148,38 +214,74 @@ def random_item_message(animal):
             "Woof means hello",
             "Dogs are the best",
             "Bark perfect"
-            ]
+        ]
         print(random.choice(messages))
 
 def pretty_item_name(items_list, type):
+    """
+    This function prints each item in the list of items in a pretty format.
+    
+    Args:
+        items_list (list): The original list of items.
+        type (str): The type of item being managed (e.g., 'CAT' or 'DOG').
+        
+    Returns:
+        None
+    """
     target_index = search_item_names(items_list, type)
 
     if target_index is None:
         return
+
     for i in items_list[target_index]:
         print("* * *", i , "* * *")
 
 def copy_list_to_other(items_list, type):
+    """
+    This function copies the current list of items to another list.
     
+    Args:
+        items_list (list): The original list of items.
+        type (str): The type of item being managed (e.g., 'CAT' or 'DOG').
+        
+    Returns:
+        None
+    """
     while True:
         selector = input(f"Do you want to copy the {type} list to other list? press 1. to copy. press 2. to exit to menu\n")
         
-        # list_name = type
         if selector == "1":
-            
+            # Create a copy of the original list
             new_list = copy.copy(items_list)
-            new_list[0] = "Experimental: Copy!"
-            print(f"{new_list}")
-            return None
             
+            # Modify the first element of the copied list
+            new_list[0] = "Experimental: Copy!"
+            
+            # Print the original and copied lists
+            print(f"The original {type} list was {items_list}, the new copy list is {new_list}")
+            return None
+        
         elif selector == "2":
             print("Search canceled.")
             return None
+        
         else:
             print("Error: select 1. or 2. to exit.")
             continue
 
 def menu_selector():
+    """
+    This function prompts the user to select between managing cats or dogs.
+    It returns a tuple containing the selected object and its type.
+
+    Parameters:
+        None
+
+    Returns:
+        tuple: A tuple containing the selected object and its type. If the user exits, it returns (None, None).
+    """
+
+            
     while True:
         type = input("To manage cats press 1. To manage dogs press 2. To exit press 3.")
 
@@ -205,6 +307,16 @@ def menu_selector():
 # ---------------------------------------------------------
 
 def menu():
+    """
+    This function is the main menu for a program that manages a list of items. It provides a simple interface for the user to interact with the program.
+
+    Parameters:
+    - active_items_list: A list of items currently active in the program.
+    - animal_name: The name of the animal being managed.
+
+    Returns:
+    - False if the user selects the "Exit" option, otherwise True.
+    """
     active_items_list, animal_name = menu_selector()
 
     if active_items_list is None:
