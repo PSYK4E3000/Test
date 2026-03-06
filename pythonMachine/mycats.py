@@ -112,6 +112,18 @@ def show_item(items_list, type):
         print(f" {i}. {items_list[i]}")
 
 def show_item_in_string(items_list, type):
+    """
+        show_item_in_string(items_list, type)
+
+        This function takes a list of items and a type (e.g., 'cat', 'dog') and prints a string with the names of the items separated by commas or 'and' depending on the number of items.
+
+        Args:
+        items_list (list): A list of items to be printed.
+        type (str): The type of items (e.g., 'cat', 'dog').
+
+        Returns:
+        None
+    """
     i = 0
     name_string = ""
     if not items_list: 
