@@ -110,6 +110,23 @@ def show_item(items_list, type):
     print(f"The {type.lower()} names are:")
     for i in range(len(items_list)):
         print(f" {i}. {items_list[i]}")
+
+def show_item_in_string(items_list, type):
+    i = 0
+    name_string = ""
+    if not items_list: 
+            return
+    while i != (len(items_list)):
+        if i < (len(items_list) - 2 ):
+            name_string += (items_list[i]) + ", "    
+            i += 1
+        elif i == (len(items_list) - 2):
+            name_string += (items_list[i]) + " and " 
+            i += 1
+        elif i == (len(items_list) - 1):
+            name_string += (items_list[i])
+            i += 1
+    print(f"The {type.lower()} names are: {name_string}")
            
 def search_item_names(items_list, type):
     """
