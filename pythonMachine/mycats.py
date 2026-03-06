@@ -47,10 +47,10 @@ def add_item(items_list, type):
                 number += 1
             else:
                 print("Error: The name cannot be empty or just spaces.")
-        show_item(items_list, type)
+        show_item_by_index(items_list, type)
 
     elif question == 2:
-        show_item(items_list, type)
+        show_item_by_index(items_list, type)
 
 def remove_item(items_list, type):
     target_index = search_item_names(items_list, type)
@@ -73,14 +73,31 @@ def remove_item(items_list, type):
             print("Error: select 1. or 2.")
             continue
 
-def show_item(items_list, type):
+def show_item_by_index(items_list, type):
     print(f"The {type.lower()} names are:")
     for i in range(len(items_list)):
         print(f" {i}. {items_list[i]}")
+
+def show_item_in_string(items_list, type):
+    i = 0
+    name_string = ""
+    if not items_list: 
+            return
+    while i != (len(items_list)):
+        if i < (len(items_list) - 2 ):
+            name_string += (items_list[i]) + ", "    
+            i += 1
+        elif i == (len(items_list) - 2):
+            name_string += (items_list[i]) + " and " 
+            i += 1
+        elif i == (len(items_list) - 1):
+            name_string += (items_list[i])
+            i += 1
+    print(f"The {type.lower()} names are: {name_string}")
            
 def search_item_names(items_list, type):
     index = None
-    if not items_list: # Si la items_list está vacía []
+    if not items_list:
         print(f"The items_list is empty! No {type.lower()}s to search.")
         return None
     while True:
@@ -119,7 +136,7 @@ def search_item_names(items_list, type):
 
 def sorting_item_names(items_list, type):
     items_list.sort()
-    show_item(items_list, type)    
+    show_item_by_index(items_list, type)    
 
 def random_item_message(animal):
     if animal == "CAT":
@@ -164,7 +181,6 @@ def copy_list_to_other(items_list, type):
     while True:
         selector = input(f"Do you want to copy the {type} list to other list? press 1. to copy. press 2. to exit to menu\n")
         
-        # list_name = type
         if selector == "1":
             
             new_list = copy.copy(items_list)
@@ -222,6 +238,7 @@ def menu():
         print(f"6. Random {animal_name} Message")
         print(f"7. Show Pretty {animal_name}")
         print(f"8. Copy {animal_name} List")
+        print(f"9. Show String Of {animal_name} Names")
         print("0. Exit")
         print("="*20)
 
@@ -231,7 +248,7 @@ def menu():
             add_item(active_items_list, animal_name)
             continue
         elif selector == "2":
-            show_item(active_items_list, animal_name)
+            show_item_by_index(active_items_list, animal_name)
             continue
         elif selector == "3":
             search_item_names(active_items_list, animal_name)
@@ -251,6 +268,9 @@ def menu():
         elif selector == "8":
             copy_list_to_other(active_items_list, animal_name)
             continue
+        elif selector == "9":
+           show_item_in_string(active_items_list, animal_name) 
+           continue
         elif selector == "0":
             print("Goodbye!")
             return False
