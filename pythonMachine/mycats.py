@@ -298,6 +298,27 @@ def copy_list_to_other(items_list, type):
             print("Error: select 1. or 2. to exit.")
             continue
 
+def proof_that_tony_stark_has_a_heart():
+    print("Proof That Tony Stark Has a Heart")
+    grid = [['.', '.', '.', '.', '.', '.'],
+            ['.', 'O', 'O', '.', '.', '.'],
+            ['O', 'O', 'O', 'O', '.', '.'],
+            ['O', 'O', 'O', 'O', 'O', '.'],
+            ['.', 'O', 'O', 'O', 'O', 'O'],
+            ['O', 'O', 'O', 'O', 'O', '.'],
+            ['O', 'O', 'O', 'O', '.', '.'],
+            ['.', 'O', 'O', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.']]
+    
+    colums = len(grid[0])
+    rows = len(grid)
+
+    for c in range(colums):
+        heart_string = ""
+        for f in range(rows):
+            heart_string += grid[f][c] + " "
+        print(heart_string)
+
 def menu_selector():
     """
     This function prompts the user to select between managing cats or dogs.
