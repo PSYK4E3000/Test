@@ -61,7 +61,7 @@ def remove_item(items_list, type):
     while True:
         
         try:
-            confirm = int(input(f"Are you sure you want to remove {items_list[target_index]}? 1. for yes, 2. for no."))
+            confirm = int(input(f"Are you sure you want to remove {items_list[target_index]}? 1. for yes, 2. for no.\n"))
             if confirm == 1:
                 removed = items_list.pop(target_index)
                 print(f"{removed} was removed")
@@ -101,7 +101,7 @@ def search_item_names(items_list, type):
         print(f"The items_list is empty! No {type.lower()}s to search.")
         return None
     while True:
-        selector = input(f"Select the way you want to search a {type.lower()} from items_list {type.lower()}s. By index press 1. By name press 2. To cancel the search press 3.").strip()
+        selector = input(f"Select the way you want to search a {type.lower()} from items_list {type.lower()}s. By index press 1. By name press 2. To cancel the search press 3.\n").strip()
 
         if selector == "1":
             try:
@@ -195,9 +195,30 @@ def copy_list_to_other(items_list, type):
             print("Error: select 1. or 2. to exit.")
             continue
 
+def proof_that_tony_stark_has_a_heart():
+    print("Proof That Tony Stark Has a Heart")
+    grid = [['.', '.', '.', '.', '.', '.'],
+            ['.', 'O', 'O', '.', '.', '.'],
+            ['O', 'O', 'O', 'O', '.', '.'],
+            ['O', 'O', 'O', 'O', 'O', '.'],
+            ['.', 'O', 'O', 'O', 'O', 'O'],
+            ['O', 'O', 'O', 'O', 'O', '.'],
+            ['O', 'O', 'O', 'O', '.', '.'],
+            ['.', 'O', 'O', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.']]
+    
+    colums = len(grid[0])
+    rows = len(grid)
+
+    for c in range(colums):
+        heart_string = ""
+        for f in range(rows):
+            heart_string += grid[f][c] + " "
+        print(heart_string)
+
 def menu_selector():
     while True:
-        type = input("To manage cats press 1. To manage dogs press 2. To exit press 3.")
+        type = input("To manage cats press 1. To manage dogs press 2. To exit press 3.\n")
 
         if type == "1":
             return cats, "CAT"
@@ -274,6 +295,9 @@ def menu():
         elif selector == "0":
             print("Goodbye!")
             return False
+        elif selector == "hero":
+            proof_that_tony_stark_has_a_heart()
+            continue
         else:
             print("Invalid option, try again.")
 
